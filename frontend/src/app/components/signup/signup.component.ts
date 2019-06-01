@@ -17,10 +17,8 @@ export class SignupComponent implements OnInit {
   }
 
   registerUser(form: NgForm) {
-    console.log(form.value);
-    const { nickname, email, country, phone, passwords } = form.value;
-
-    this.authService.signup(nickname, email, country, phone, passwords.password)
+    const { nickname, email, phone, country, passwords } = form.value;
+    this.authService.signup(nickname, email, phone, country, passwords.password)
       .subscribe(() => {
         this.router.navigate(['/signin']);
       })
