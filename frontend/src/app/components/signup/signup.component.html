@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <form id="signup-form" #signupForm="ngForm" (ngSubmit)="registerUser(signupForm)">
+        <div class="form-group">
+          <label for="nickname">Nickname</label>
+          <input type="text" id="nickname" class="form-control" ngModel #nickname="ngModel" name="nickname"
+            placeholder="Example: John" required>
+        </div>
+        <div class="form-group">
+          <label for="lname">Email</label>
+          <input type="email" id="email" class="form-control" ngModel #email="ngModel" name="email"
+            placeholder="Example: example@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" class="form-control" name="phone" ngModel #phone="ngModel"
+            placeholder="Example: 0888888888" required>
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" class="form-control" ngModel #country="ngModel" name="country">
+            <option value="" selected disabled hidden>Choose country</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Romania">Romania</option>
+            <option value="USA">USA</option>
+            <option value="Austria">Austria</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Germany">Germany</option>
+            <option value="Italy">Italy</option>
+            <option value="Spain">Spain</option>
+            <option value="Greece">Greece</option>
+            <option value="Russia">Russia</option>
+          </select>
+        </div>
+        <div ngModelGroup="passwords">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" ngModel #password="ngModel" name="password"
+              placeholder="" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmpass">Confirm Password</label>
+            <input type="password" id="confirmpass" class="form-control" ngModel #confirmpass="ngModel"
+              name="confirmpass" placeholder="" required>
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary btn-lg" id="submitbtn" name="submit">Sign up!</button>
+        </div>
+      </form>
+    </div>
+  </div>
