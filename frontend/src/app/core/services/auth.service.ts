@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Injectable({
@@ -18,6 +17,15 @@ export class AuthService {
 
   signin(nickname: string, password: string) {
     return this.http.post('http://localhost:3000/api/signin', { nickname, password });
+  }
+
+  findUserByNickname(nickname: string) {
+    return this.http.post('http://localhost:3000/api/user', { nickname })
+
+  }
+
+  findIfEmailExists(email: string) {
+    return this.http.post('http://localhost:3000/api/email', { email });
   }
 }
 

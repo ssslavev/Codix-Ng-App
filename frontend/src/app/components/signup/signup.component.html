@@ -4,8 +4,9 @@
       <form id="signup-form" #signupForm="ngForm" (ngSubmit)="registerUser(signupForm)">
         <div class="form-group">
           <label for="nickname">Nickname</label>
-          <input type="text" minlength="6" maxlength="40" id="nickname" class="form-control" ngModel #nickname="ngModel"
-            name="nickname" placeholder="Example: John" required>
+          <input type="text" #nicknameInput (keyup)="onKey(nicknameInput.value)" minlength="6" maxlength="40"
+            id="nickname" class="form-control" ngModel #nickname="ngModel" name="nickname" placeholder="Example: John"
+            required>
         </div>
         <div *ngIf="nickname.errors && (nickname.dirty || nickname.touched)" class="alert alert-danger">
           <div [hidden]="!nickname.errors.required">
@@ -15,15 +16,21 @@
             Nickname must be between 6 and 40 characters long!
           </div>
         </div>
+        <div *ngIf="userExists" class="alert alert-danger">
+          Username already exists!
+        </div>
         <div class="form-group">
           <label for="lname">Email</label>
-          <input type="email" id="email" class="form-control" ngModel #email="ngModel" name="email"
-            placeholder="Example: example@example.com" required>
+          <input type="email" #emailInput (keyup)="onEmailKeyPress(emailInput.value)" id="email" class="form-control"
+            ngModel #email="ngModel" name="email" placeholder="Example: example@example.com" required>
         </div>
         <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
           <div [hidden]="!email.errors.required">
             Email is required!
           </div>
+        </div>
+        <div *ngIf="emailExists" class="alert alert-danger">
+          This email is already in use!
         </div>
         <div class="form-group">
           <label for="phone">Phone</label>
@@ -88,7 +95,7 @@
           </div>
         </div>
         <div class="form-group text-center">
-          <button type="submit" [disabled]="!signupForm.form.valid" class="btn btn-primary btn-lg" id="submitbtn"
+          <button type="submit" [disabled]="!signupForm.form.valid" class="btn  btn-lg" id="submitbtn"
             name="submit">Sign up!</button>
         </div>
       </form>

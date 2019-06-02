@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
+  userExists: boolean;
+  emailExists: boolean;
+
   constructor(private authService: AuthService,
     private router: Router) { }
 
@@ -33,6 +36,30 @@ export class SignupComponent implements OnInit {
 
       })
 
+  }
+
+  onKey(value: string) {
+
+    this.authService.findUserByNickname(value)
+      .subscribe((data) => {
+        if (data['status'] === true) {
+          this.userExists = true;
+        } else {
+          this.userExists = false;
+        }
+      })
+  }
+
+  onEmailKeyPress(value: string) {
+
+    this.authService.findIfEmailExists(value)
+      .subscribe((data) => {
+        if (data['status'] === true) {
+          this.emailExists = true
+        } else {
+          this.emailExists = false;
+        }
+      })
   }
 
 }

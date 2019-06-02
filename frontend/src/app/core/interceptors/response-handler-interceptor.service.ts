@@ -19,7 +19,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
         if (success.url.endsWith('signup')) {
           let message = success.body.message;
-          this.toastr.success(message);
+          this.toastr.success(message, "Success");
         }
 
 
@@ -28,7 +28,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
           let userName = success.body.nickname;
           let message = success.body.message;
 
-          this.toastr.success(`Hello, ${userName}! ${message}`);
+          this.toastr.success(`Hello, ${userName}! ${message}`, "Success");
         }
 
 
@@ -38,13 +38,18 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
     }), catchError((err) => {
 
-      this.toastr.error(err.error.message, 'Error', { timeOut: 5000 });
 
 
-      //this.toastr.error(err.error, "Error", { timeOut: 5000, });
+
+      if (err.url.endsWith('signin')) {
+        this.toastr.error(err.error.message, "Error", { timeOut: 5000, });
+      }
+
+      this.toastr.error(err.error.errors[0]['msg'], 'Error', { timeOut: 5000 });
 
 
-      //console.log("ERROR", err);
+
+      console.log("ERROR", err);
 
       throw err;
     }))
