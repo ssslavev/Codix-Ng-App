@@ -15,6 +15,10 @@ export class AuthService {
 
     return this.http.post('http://localhost:3000/api/signup', { nickname, email, country, phone, password });
   }
+
+  signin(nickname: string, password: string) {
+    return this.http.post('http://localhost:3000/api/signin', { nickname, password });
+  }
 }
 
 

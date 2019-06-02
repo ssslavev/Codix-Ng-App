@@ -7,17 +7,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li *ngIf="isLoggedIn" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink='/myprofile'>My Profile</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!(isLoggedIn)" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink='/signup'>Sign up</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!(isLoggedIn)" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink='/signin'>Sign in</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink='/logout'>Logout</a>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" (click)="logOut()" routerLink='/logout'>Logout</a>
         </li>
       </ul>
     </div>

@@ -1,3 +1,21 @@
-<p>
-  signin works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <form id="signin-form" #signinForm="ngForm" (ngSubmit)="loginUser(signinForm)">
+        <div class="form-group">
+          <label for="nickname">Nickname</label>
+          <input type="text" id="nickname" class="form-control" ngModel #nickname="ngModel" name="nickname"
+            placeholder="Example: John" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" ngModel #password="ngModel" name="password"
+            placeholder="" required>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" [disabled]="!signinForm.form.valid" class="btn btn-primary btn-lg" id="submitbtn"
+            name="submit">Sign in!</button>
+        </div>
+      </form>
+    </div>
+  </div>

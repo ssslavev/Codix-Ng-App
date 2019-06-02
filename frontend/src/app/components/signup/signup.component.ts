@@ -20,7 +20,17 @@ export class SignupComponent implements OnInit {
     const { nickname, email, phone, country, passwords } = form.value;
     this.authService.signup(nickname, email, phone, country, passwords.password)
       .subscribe(() => {
-        this.router.navigate(['/signin']);
+        const { nickname, passwords } = form.value;
+        this.authService.signin(nickname, passwords.password)
+          .subscribe((data) => {
+            console.log(data);
+            localStorage.setItem('token', data['token']);
+            localStorage.setItem('logged-user-id', data['userId']);
+            localStorage.setItem('logged-user-nickname', data['nickname']);
+            this.router.navigate(['/myprofile']);
+          }, err => console.error(err)
+          )
+
       })
 
   }
