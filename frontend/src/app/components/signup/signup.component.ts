@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
         const { nickname, passwords, checkbox } = form.value;
         this.authService.signin(nickname, passwords.password, checkbox)
           .subscribe((data) => {
-            console.log(data);
+            //console.log(data);
             localStorage.setItem('token', data['token']);
             localStorage.setItem('logged-user-id', data['userId']);
             localStorage.setItem('logged-user-nickname', data['nickname']);

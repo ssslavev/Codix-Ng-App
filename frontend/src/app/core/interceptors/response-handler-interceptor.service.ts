@@ -15,7 +15,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
     return next.handle(req).pipe(tap((success) => {
       if (success instanceof HttpResponse) {
-        console.log('SUCCESS', success);
+        //console.log('SUCCESS', success);
 
         if (success.url.endsWith('signup')) {
           let message = success.body.message;
@@ -43,7 +43,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
       }
 
       this.toastr.error(err.error.errors[0]['msg'], 'Error', { timeOut: 5000 });
-      console.log("ERROR", err);
+      //console.log("ERROR", err);
 
       throw err;
     }))
