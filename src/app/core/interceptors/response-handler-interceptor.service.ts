@@ -15,7 +15,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
     return next.handle(req).pipe(tap((success) => {
       if (success instanceof HttpResponse) {
-        //console.log('SUCCESS', success);
+        // console.log('SUCCESS', success);
 
         if (success.url.endsWith('signup')) {
           let message = success.body.message;
@@ -31,7 +31,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
           this.toastr.success(`Hello, ${userName}! ${message}`, "Success");
         }
 
-        if (success.url.endsWith('user')) {
+        if (success.url.endsWith('edit')) {
           let message = success.body.message;
           this.toastr.success(message, "Success");
         }
