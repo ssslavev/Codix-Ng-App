@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/shared/navigation/navigation.component';
@@ -29,6 +30,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot()
   ],
   providers: [

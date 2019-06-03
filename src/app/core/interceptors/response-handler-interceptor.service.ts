@@ -3,39 +3,56 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } fr
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
-  constructor(private toastr: ToastrService) { }
+  constructor(private toastr: ToastrService, private spinner: NgxSpinnerService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
 
     return next.handle(req).pipe(tap((success) => {
       if (success instanceof HttpResponse) {
         // console.log('SUCCESS', success);
 
         if (success.url.endsWith('signup')) {
+          this.spinner.show();
           let message = success.body.message;
           this.toastr.success(message, "Success");
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 2000)
         }
 
 
         if (success.url.endsWith('signin')) {
-
+          this.spinner.show();
           let userName = success.body.nickname;
           let message = success.body.message;
 
           this.toastr.success(`Hello, ${userName}! ${message}`, "Success");
+
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 2000)
+
         }
 
         if (success.url.endsWith('edit')) {
+          this.spinner.show();
           let message = success.body.message;
           this.toastr.success(message, "Success");
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 2000)
         }
+
       }
+
     }), catchError((err) => {
 
       if (err.url.endsWith('signin')) {
@@ -47,6 +64,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
       throw err;
     }))
+
   };
 }
 
