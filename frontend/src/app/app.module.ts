@@ -12,6 +12,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { ResponseHandlerInterceptorService } from './core/interceptors/response-handler-interceptor.service';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ResponseHandlerInterceptorService } from './core/interceptors/response-
     NavigationComponent,
     SignupComponent,
     SigninComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +29,7 @@ import { ResponseHandlerInterceptorService } from './core/interceptors/response-
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-top-center'
-    })
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthGuard,

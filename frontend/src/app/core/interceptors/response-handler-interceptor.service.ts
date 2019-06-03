@@ -31,24 +31,18 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
           this.toastr.success(`Hello, ${userName}! ${message}`, "Success");
         }
 
-
-
+        if (success.url.endsWith('user')) {
+          let message = success.body.message;
+          this.toastr.success(message, "Success");
+        }
       }
-
-
     }), catchError((err) => {
 
-
-
-
       if (err.url.endsWith('signin')) {
-        this.toastr.error(err.error.message, "Error", { timeOut: 5000, });
+        this.toastr.error(err.error.message, "Error", { timeOut: 5000 });
       }
 
       this.toastr.error(err.error.errors[0]['msg'], 'Error', { timeOut: 5000 });
-
-
-
       console.log("ERROR", err);
 
       throw err;

@@ -10,6 +10,7 @@ export class NavigationComponent implements OnInit, DoCheck {
 
 
   isLoggedIn;
+  nickname;
 
   constructor(private router: Router) { }
 
@@ -18,6 +19,7 @@ export class NavigationComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.isLoggedIn = localStorage.getItem('logged-user-id');
+    this.nickname = localStorage.getItem('logged-user-nickname');
   }
 
   logOut() {

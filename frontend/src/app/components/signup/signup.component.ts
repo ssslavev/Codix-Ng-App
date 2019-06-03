@@ -23,8 +23,8 @@ export class SignupComponent implements OnInit {
     const { nickname, email, phone, country, passwords } = form.value;
     this.authService.signup(nickname, email, phone, country, passwords.password)
       .subscribe(() => {
-        const { nickname, passwords } = form.value;
-        this.authService.signin(nickname, passwords.password)
+        const { nickname, passwords, checkbox } = form.value;
+        this.authService.signin(nickname, passwords.password, checkbox)
           .subscribe((data) => {
             console.log(data);
             localStorage.setItem('token', data['token']);

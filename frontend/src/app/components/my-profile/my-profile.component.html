@@ -1,3 +1,51 @@
-<p>
-  my-profile works!
-</p>
+<div class="container">
+  <div id="user-profile">
+    <div class="row text-center">
+      <div class="col-lg-6 offset-lg-3">
+        <h1>My Profile</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 offset-lg-4">
+        <label>Nikcname</label>
+        <div class="user-value float-right">
+          {{user?.nickname}}
+        </div>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 offset-lg-4">
+        <label>Email</label>
+        <div class="user-value float-right">
+          {{user?.email}}
+        </div>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 offset-lg-4">
+        <label>Country</label>
+        <div class="user-value float-right">
+          {{user?.country}}
+        </div>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 offset-lg-4">
+        <label>Phone</label>
+        <div class="user-value float-right">
+          {{user?.phone}}
+        </div>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 offset-lg-4">
+        <button class="btn btn-dark btn-lg float-right" routerLink='/edit-profile'>Edit</button>
+      </div>
+    </div>
+  </div>
+
+</div>

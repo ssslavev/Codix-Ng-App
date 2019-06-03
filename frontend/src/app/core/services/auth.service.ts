@@ -16,8 +16,8 @@ export class AuthService {
     return this.http.post('http://localhost:3000/api/signup', { nickname, email, country, phone, password });
   }
 
-  signin(nickname: string, password: string) {
-    return this.http.post('http://localhost:3000/api/signin', { nickname, password });
+  signin(nickname: string, password: string, checkbox: any) {
+    return this.http.post('http://localhost:3000/api/signin', { nickname, password, checkbox });
   }
 
   findUserByNickname(nickname: string) {
@@ -31,6 +31,10 @@ export class AuthService {
 
   findUserById(id: string) {
     return this.http.get<User>(`http://localhost:3000/api/user/${id}`);
+  }
+
+  updateUser(user) {
+    return this.http.put('http://localhost:3000/api/user', { user })
   }
 }
 

@@ -18,8 +18,8 @@ export class SigninComponent implements OnInit {
 
   loginUser(form: NgForm) {
 
-    const { nickname, password } = form.value;
-    this.authService.signin(nickname, password)
+    const { nickname, password, checkbox } = form.value;
+    this.authService.signin(nickname, password, checkbox)
       .subscribe((data) => {
         localStorage.setItem('token', data['token']);
         localStorage.setItem('logged-user-id', data['userId']);

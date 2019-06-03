@@ -4,11 +4,13 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'myprofile', component: MyProfileComponent, canActivate: [AuthGuard] },
+  { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/myprofile', pathMatch: 'full' }
 ];
 

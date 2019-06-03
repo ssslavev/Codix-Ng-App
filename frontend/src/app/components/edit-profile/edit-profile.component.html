@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <form *ngIf="user" id="edit-form" #editForm="ngForm">
+        <div class="form-group">
+          <label for="nickname">Nickname</label>
+          <input type="text" minlength="6" maxlength="40" id="nickname" class="form-control" [(ngModel)]="user.nickname"
+            name="nickname" placeholder="Example: John" #nickname="ngModel" required>
+        </div>
+        <div *ngIf="nickname.errors && (nickname.dirty || nickname.touched)" class="alert alert-danger">
+          <div [hidden]="!nickname.errors.required">
+            Username is required!
+          </div>
+          <div [hidden]="!nickname.errors.minlength">
+            Nickname must be between 6 and 40 characters long!
+          </div>
+        </div>
+        <div *ngIf="userExists" class="alert alert-danger">
+          Username already exists!
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" minlength="10" maxlength="15" id="phone" [(ngModel)]="user.phone" #phone="ngModel"
+            class="form-control" name="phone" placeholder="Example: 0888888888" required>
+        </div>
+        <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger">
+          <div [hidden]="!phone.errors.required">
+            Phone is required!
+          </div>
+          <div [hidden]="!phone.errors.minlength">
+            Phone must be between 10 and 15 digits long!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" class="form-control" [(ngModel)]="user.country" name="country">
+            <option value="" selected disabled hidden>Choose country</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Romania">Romania</option>
+            <option value="USA">USA</option>
+            <option value="Austria">Austria</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Germany">Germany</option>
+            <option value="Italy">Italy</option>
+            <option value="Spain">Spain</option>
+            <option value="Greece">Greece</option>
+            <option value="Russia">Russia</option>
+          </select>
+        </div>
+        <div *ngIf="user.country.errors && (country.dirty || user.country.touched)" class="alert alert-danger">
+          <div [hidden]="!user.country.errors.required">
+            Country is required!
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <button (click)="updateUser()" [disabled]="!editForm.form.valid" class="btn   btn-lg" id="submitbtn"
+            name="submit">Update!</button>
+        </div>
+      </form>
+    </div>
+  </div>

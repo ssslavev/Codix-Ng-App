@@ -1,0 +1,16 @@
+.user-value {
+    display: inline-block;
+}
+
+#user-profile {
+    margin-top: 50px;
+}
+
+#user-profile label {
+
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 50px;
+}

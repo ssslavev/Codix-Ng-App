@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-.toast-top-center {
-    top: 10% !important;
-    right: 0;
-    width: 100%;
+.toast-top-right {
+    top: 60px !important;
+    right: 12px !important;
+}
+
+body {
+    background-color: #ECECEC;
 }
