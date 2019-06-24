@@ -14,18 +14,24 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    if (req) {
+      this.spinner.show();
+    }
 
     return next.handle(req).pipe(tap((success) => {
+
+
+
       if (success instanceof HttpResponse) {
         // console.log('SUCCESS', success);
 
         if (success.url.endsWith('signup')) {
           this.spinner.show();
           let message = success.body.message;
-          this.toastr.success(message, "Success");
+          this.toastr.success(message, 'Success');
           setTimeout(() => {
             this.spinner.hide();
-          }, 2000)
+          }, 2000);
         }
 
 
@@ -34,7 +40,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
           let userName = success.body.nickname;
           let message = success.body.message;
 
-          this.toastr.success(`Hello, ${userName}! ${message}`, "Success");
+          this.toastr.success(`Hello, ${userName}! ${message}`, 'Success');
 
           setTimeout(() => {
             this.spinner.hide();
@@ -45,10 +51,10 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
         if (success.url.endsWith('edit')) {
           this.spinner.show();
           let message = success.body.message;
-          this.toastr.success(message, "Success");
+          this.toastr.success(message, 'Success');
           setTimeout(() => {
             this.spinner.hide();
-          }, 2000)
+          }, 2000);
         }
 
       }
@@ -56,15 +62,15 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
     }), catchError((err) => {
 
       if (err.url.endsWith('signin')) {
-        this.toastr.error(err.error.message, "Error", { timeOut: 5000 });
+        this.toastr.error(err.error.message, 'Error', { timeOut: 5000 });
       }
 
       this.toastr.error(err.error.errors[0]['msg'], 'Error', { timeOut: 5000 });
-      //console.log("ERROR", err);
+      // console.log("ERROR", err);
 
       throw err;
-    }))
+    }));
 
-  };
+  }
 }
 

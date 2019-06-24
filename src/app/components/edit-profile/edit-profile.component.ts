@@ -21,7 +21,7 @@ export class EditProfileComponent implements OnInit {
   ngOnInit() {
     this.authService.findUserById(this.userId)
       .subscribe((user) => {
-        //console.log(user.nickname);
+        // console.log(user.nickname);
         this.user = user;
       });
 
@@ -33,7 +33,7 @@ export class EditProfileComponent implements OnInit {
       .subscribe(() => {
         localStorage.setItem('logged-user-nickname', this.user.nickname);
         this.router.navigate(['/myprofile']);
-      })
+      });
   }
 
 

@@ -10,8 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService: AuthService,
-    private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,6 +24,6 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('logged-user-id', data['userId']);
         localStorage.setItem('logged-user-nickname', data['nickname']);
         this.router.navigate(['/myprofile']);
-      })
+      });
   }
 }

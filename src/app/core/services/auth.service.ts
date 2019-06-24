@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   findUserByNickname(nickname: string) {
-    return this.http.post('https://codix-rest-api.herokuapp.com/api/user', { nickname })
+    return this.http.post('https://codix-rest-api.herokuapp.com/api/user', { nickname });
 
   }
 
@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   updateUser(user) {
-    return this.http.put('https://codix-rest-api.herokuapp.com/api/edit', { user })
+    return this.http.put('https://codix-rest-api.herokuapp.com/api/edit', { user });
   }
 }
 

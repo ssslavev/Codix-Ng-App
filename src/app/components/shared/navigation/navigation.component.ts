@@ -24,7 +24,7 @@ export class NavigationComponent implements OnInit, DoCheck {
 
   logOut() {
     localStorage.clear();
-    this.router.navigate(['/signin'])
+    this.router.navigate(['/signin']);
   }
 
 

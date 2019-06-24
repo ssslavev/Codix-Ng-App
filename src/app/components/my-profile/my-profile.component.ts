@@ -17,9 +17,9 @@ export class MyProfileComponent implements OnInit {
 
     this.authService.findUserById(this.userId)
       .subscribe((user) => {
-        //console.log(user.nickname);
+        // console.log(user.nickname);
         this.user = user;
-      })
+      });
   }
 
 }

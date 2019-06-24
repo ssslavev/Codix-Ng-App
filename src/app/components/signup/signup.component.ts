@@ -13,8 +13,7 @@ export class SignupComponent implements OnInit {
   userExists: boolean;
   emailExists: boolean;
 
-  constructor(private authService: AuthService,
-    private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,15 +25,15 @@ export class SignupComponent implements OnInit {
         const { nickname, passwords, checkbox } = form.value;
         this.authService.signin(nickname, passwords.password, checkbox)
           .subscribe((data) => {
-            //console.log(data);
+            // console.log(data);
             localStorage.setItem('token', data['token']);
             localStorage.setItem('logged-user-id', data['userId']);
             localStorage.setItem('logged-user-nickname', data['nickname']);
             this.router.navigate(['/myprofile']);
           }, err => console.error(err)
-          )
+          );
 
-      })
+      });
 
   }
 
@@ -47,7 +46,7 @@ export class SignupComponent implements OnInit {
         } else {
           this.userExists = false;
         }
-      })
+      });
   }
 
   onEmailKeyPress(value: string) {
@@ -55,11 +54,11 @@ export class SignupComponent implements OnInit {
     this.authService.findIfEmailExists(value)
       .subscribe((data) => {
         if (data['status'] === true) {
-          this.emailExists = true
+          this.emailExists = true;
         } else {
           this.emailExists = false;
         }
-      })
+      });
   }
 
 }
