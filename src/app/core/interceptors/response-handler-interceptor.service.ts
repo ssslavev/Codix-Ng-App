@@ -14,13 +14,8 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (req) {
-      this.spinner.show();
-    }
 
     return next.handle(req).pipe(tap((success) => {
-
-
 
       if (success instanceof HttpResponse) {
         // console.log('SUCCESS', success);
@@ -44,7 +39,7 @@ export class ResponseHandlerInterceptorService implements HttpInterceptor {
 
           setTimeout(() => {
             this.spinner.hide();
-          }, 2000)
+          }, 2000);
 
         }
 
