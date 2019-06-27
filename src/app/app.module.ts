@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -12,8 +12,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { ResponseHandlerInterceptorService } from './core/interceptors/response-handler-interceptor.service';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -31,11 +31,11 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     HttpClientModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CoreModule
   ],
   providers: [
-    AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: ResponseHandlerInterceptorService, multi: true }
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
