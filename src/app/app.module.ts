@@ -14,6 +14,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { AuthGuard } from './core/guards/auth.guard';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { CoreModule } from './core/core.module';
+import { MoviesComponent } from './components/movies/movies.component';
+import { MoviesService } from './core/services/movies/movies.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { CoreModule } from './core/core.module';
     SignupComponent,
     SigninComponent,
     MyProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    MoviesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { CoreModule } from './core/core.module';
     CoreModule
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    MoviesService
   ],
   bootstrap: [AppComponent]
 })
