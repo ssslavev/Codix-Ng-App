@@ -12,7 +12,7 @@ export class MoviesComponent implements OnInit {
 
   movies: Movie[];
   constructor(private movieService: MoviesService, private activatedRoute: ActivatedRoute) {
-    this.movies = this.activatedRoute.snapshot.data[0].results.slice(0, 12);
+    this.movies = this.activatedRoute.snapshot.data[0].results.slice(0, 18);
   }
 
   ngOnInit() { }
