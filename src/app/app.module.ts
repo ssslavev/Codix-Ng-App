@@ -17,6 +17,7 @@ import { CoreModule } from './core/core.module';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MoviesService } from './core/services/movies/movies.service';
 import { MovieComponent } from './components/movie/movie.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MovieComponent } from './components/movie/movie.component';
     MyProfileComponent,
     EditProfileComponent,
     MoviesComponent,
-    MovieComponent
+    MovieComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
