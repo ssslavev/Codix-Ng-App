@@ -10,10 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MoviesComponent implements OnInit {
 
-  popularMovies: Movie[];
+  movies: Movie[];
   constructor(private movieService: MoviesService, private activatedRoute: ActivatedRoute) {
-    this.popularMovies = this.activatedRoute.snapshot.data[0].results.slice(0, 12);
-    console.log(this.popularMovies);
+    this.movies = this.activatedRoute.snapshot.data[0].results.slice(0, 12);
   }
 
   ngOnInit() { }

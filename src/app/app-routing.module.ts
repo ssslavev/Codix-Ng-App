@@ -7,6 +7,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MoviesResolver } from './components/movies/movies.resolver';
+import { UpcomingtMoviesResolver } from './components/movies/upcoming-movies.resolver';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'myprofile', component: MyProfileComponent, canActivate: [AuthGuard] },
   { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'movies', component: MoviesComponent, resolve: [MoviesResolver] },
+  { path: 'upcoming-movies', component: MoviesComponent, resolve: [UpcomingtMoviesResolver] },
   { path: '', redirectTo: '/myprofile', pathMatch: 'full' }
 ];
 

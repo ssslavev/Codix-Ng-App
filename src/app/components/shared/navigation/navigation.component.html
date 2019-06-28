@@ -8,6 +8,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
+        <li *ngIf="isLoggedIn" routerLinkActive="active" class="nav-item dropdown bg-dark">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Movies
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLinkActive="active" routerLink='/movies'>Popular movies</a>
+            <a class="dropdown-item" routerLinkActive="active" routerLink="/upcoming-movies">Movies</a>
+            <a class="dropdown-item" routerLinkActive="active" href="#">Movies</a>
+          </div>
+        </li>
         <li *ngIf="isLoggedIn" class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink='/myprofile'>My Profile</a>
         </li>

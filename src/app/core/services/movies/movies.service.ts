@@ -20,5 +20,9 @@ export class MoviesService {
 
   }
 
+  getUpcomingMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(BASE_URL + '/upcoming' + API_KEY);
+  }
+
 
 }
