@@ -16,6 +16,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { CoreModule } from './core/core.module';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MoviesService } from './core/services/movies/movies.service';
+import { MovieComponent } from './components/movie/movie.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MoviesService } from './core/services/movies/movies.service';
     SigninComponent,
     MyProfileComponent,
     EditProfileComponent,
-    MoviesComponent
+    MoviesComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import Movie from 'src/app/models/Movie';
 import { Observable } from 'rxjs';
 import { MoviesService } from 'src/app/core/services/movies/movies.service';
+import { take } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'

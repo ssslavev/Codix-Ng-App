@@ -1,3 +1,7 @@
 .navbar-brand {
     color: #87CEEB;
 }
+
+nav {
+    margin-bottom: 25px;
+}

@@ -12,7 +12,7 @@ export class MoviesComponent implements OnInit {
 
   popularMovies: Movie[];
   constructor(private movieService: MoviesService, private activatedRoute: ActivatedRoute) {
-    this.popularMovies = this.activatedRoute.snapshot.data[0];
+    this.popularMovies = this.activatedRoute.snapshot.data[0].results.slice(0, 12);
     console.log(this.popularMovies);
   }
 
