@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from 'src/app/core/services/movies/movies.service';
 import Movie from 'src/app/models/Movie';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -10,13 +11,15 @@ import Movie from 'src/app/models/Movie';
 export class MoviesComponent implements OnInit {
 
   popularMovies: Movie[];
-  constructor(private movieService: MoviesService) { }
-
-  ngOnInit() {
-    this.movieService.getPopularMovies().subscribe(movies => {
-      this.popularMovies = movies;
-      console.log(movies['results']);
-    });
+  constructor(private movieService: MoviesService, private activatedRoute: ActivatedRoute) {
+    this.popularMovies = this.activatedRoute.snapshot.data[0];
+    console.log(this.popularMovies);
   }
 
+  ngOnInit() { }
+
+
+
 }
+
+
